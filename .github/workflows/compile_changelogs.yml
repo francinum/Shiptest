@@ -3,12 +3,14 @@ name: Compile changelogs
 on:
   schedule:
     - cron: "0 * * * *"
+  
   workflow_dispatch:
 
 jobs:
   compile:
     name: "Compile changelogs"
     runs-on: ubuntu-20.04
+    if: github.repository == 'shiptest-ss13/Shiptest'
     steps:
       - name: "Check for CHANGELOG_ENABLER secret and pass true to output if it exists to be checked by later steps"
         id: value_holder
